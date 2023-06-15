@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Optional, adjust as needed */
+        }
+
+        .card {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            display: none; /* Initially hide the image */
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            margin-top: 0;
+        }
+
+        .card-content p {
+            margin-bottom: 20px;
+        }
+
+        #hateMe {
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #337ab7;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            position: absolute;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+          <img src="/pls_.jpg" alt="Card Image">
+          <div class="card-content">
+            <h3>Feelings Test</h3>
+            <p>Do you like me?</p>
+            <button id="likeMe">I Like You</button>
+            <button id="hateMe">nahhhh</button>
+          </div>
+        </div>
+    </div>
+    <script>
+        var likeMeButton = document.getElementById('likeMe');
+        var hateMeButton = document.getElementById('hateMe');
+        var cardImage = document.querySelector('.card img');
+
+        likeMeButton.addEventListener('click', function() {
+            cardImage.style.display = 'block'; // Show the image
+        });
+
+        hateMeButton.addEventListener('click', function() {
+            moveButton();
+        });
+
+        function moveButton() {
+            var card = document.querySelector('.card');
+            var cardWidth = card.offsetWidth;
+            var cardHeight = card.offsetHeight;
+            var hateMeButtonWidth = hateMeButton.offsetWidth;
+            var hateMeButtonHeight = hateMeButton.offsetHeight;
+            var maxX = cardWidth - hateMeButtonWidth;
+            var maxY = cardHeight - hateMeButtonHeight;
+
+            var randomX = Math.floor(Math.random() * maxX);
+            var randomY = Math.floor(Math.random() * maxY);
+
+            hateMeButton.style.left = randomX + 'px';
+            hateMeButton.style.top = randomY + 'px';
+        }
+    </script>
+</body>
+</html>
